@@ -1,19 +1,31 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from "next/image";
+import {getColors, setup} from "../lib/getTheme";
 
-const Home: NextPage = () => {
+export async function getStaticProps() {
+    const colors = await getColors(await setup())
+
+    return {
+        props: {colors},
+    }
+}
+
+interface PHome {
+    colors: {[key: string]: string}
+}
+const Home = ({colors}: PHome) => {
+    console.log(colors)
+
     return (
         <>
             <Head>
                 <title>Frontify - POC</title>
             </Head>
 
-            <nav className="w-screen bg-slate-600 grid items-center px-6 py-2 text-2xl">
+            <nav className="w-screen grid items-center px-6 py-2 text-2xl" style={{background: colors["Navbar bg"]}}>
                 <span>"PLACEHOLDER": A brand</span>
             </nav>
             <main className="grid place-content-center min-h-screen">
-                <h1 className="text-4xl">Hello <span className="text-rose-600">world!</span></h1>
+                <h1 className="text-4xl">Hello <span style={{color: colors["Hero color"]}}>world!</span></h1>
                 <h3>This is some text...</h3>
             </main>
         </>
