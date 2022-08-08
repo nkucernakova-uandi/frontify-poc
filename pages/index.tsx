@@ -24,9 +24,9 @@ const Home = ({colors}: PHome) => {
             <nav className="w-screen grid items-center px-6 py-2 text-2xl" style={{background: colors["Navbar bg"]}}>
                 <span>"PLACEHOLDER": A brand</span>
             </nav>
-            <main className="grid place-content-center min-h-screen">
+            <main className="grid place-content-center min-h-screen text-center">
                 <h1 className="text-4xl">Hello <span style={{color: colors["Hero color"]}}>world!</span></h1>
-                <h3>This is some text...</h3>
+                <h2>This is some text...</h2>
             </main>
         </>
     )
